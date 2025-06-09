@@ -10,3 +10,31 @@
     <h1>Hola mundo...</h1>
 </body>
 </html>
+#!/bin/bash
+
+# Lista de asignaturas
+asignaturas=(
+  "Ingles_Tecnico"
+  "Matematica_II"
+  "Arquitectura_de_Computadoras_II"
+  "Sistema_Operativo_II"
+  "Etica_Profesional"
+  "Redes_I"
+  "Practicas_Profesionalizantes_II"
+)
+
+# Subdirectorios para cada asignatura
+subcarpetas=("enunciados" "soluciones" "bibliografia" "videos")
+
+# Carpeta base donde se crean las estructuras (Escritorio del usuario)
+base_dir="$HOME/Escritorio"
+
+# Crear estructura
+for materia in "${asignaturas[@]}"; do
+  mkdir -p "$base_dir/$materia"
+  for sub in "${subcarpetas[@]}"; do
+    mkdir -p "$base_dir/$materia/$sub"
+  done
+done
+
+echo "Estructura creada correctamente en $base_dir"
