@@ -11,47 +11,9 @@
 </body>
 </html>
 
-#!/bin/bash
-
-# Trabajo Práctico N°2 - Script de creación de estructura de directorios
-# Autor: Agustin Ocampo
-# Descripción: Crea carpetas por asignatura con subcarpetas para enunciados, soluciones, bibliografía y videos.
-
-# --------------------
-# Lista de asignaturas
-# --------------------
-asignaturas=(
-  "Ingles_Tecnico"
-  "Matematica_II"
-  "Arquitectura_de_Computadoras_II"
-  "Sistema_Operativo_II"
-  "Etica_Profesional"
-  "Redes_I"
-  "Practicas_Profesionalizantes_II"
-)
-
-# --------------------------
-# Subcarpetas para cada tema
-# --------------------------
-subcarpetas=("enunciados" "soluciones" "bibliografia" "videos")
-
-# ------------------------------------------------------
-# Detectar ruta del escritorio según el idioma del sistema
-# ------------------------------------------------------
-base_dir="$(xdg-user-dir DESKTOP)"
-
-# --------------------------------
-# Crear la estructura de carpetas
-# --------------------------------
-echo "Creando estructura de directorios en: $base_dir"
-
-for materia in "${asignaturas[@]}"; do
-  echo "→ Creando carpeta para: $materia"
-  mkdir -p "$base_dir/$materia"
-  for sub in "${subcarpetas[@]}"; do
-    mkdir -p "$base_dir/$materia/$sub"
-    echo "   └── Subcarpeta: $sub"
-  done
-done
-
-echo "✅ Estructura creada correctamente en $base_dir"
+sudo docker run -d -p 9000:9000 -p 8000:8000 \
+  --name portainer \
+  --restart=always \
+  -v /var/run/docker.sock:/var/run/docker.sock \
+  -v portainer_data:/data \
+  portainer/portainer-ce
