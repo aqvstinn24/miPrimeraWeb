@@ -10,9 +10,17 @@
     <h1>Hola mundo...</h1>
 </body>
 </html>
+
 #!/bin/bash
 
+# Trabajo Práctico N°2 - Script de creación de estructura de directorios
+# Autor: Agustin Ocampo
+# Fecha: (poné la fecha de hoy si querés)
+# Descripción: Este script crea una estructura de carpetas por asignatura con subcarpetas para enunciados, soluciones, bibliografía y videos.
+
+# --------------------
 # Lista de asignaturas
+# --------------------
 asignaturas=(
   "Ingles_Tecnico"
   "Matematica_II"
@@ -23,18 +31,29 @@ asignaturas=(
   "Practicas_Profesionalizantes_II"
 )
 
-# Subdirectorios para cada asignatura
+# --------------------------
+# Subcarpetas para cada tema
+# --------------------------
 subcarpetas=("enunciados" "soluciones" "bibliografia" "videos")
 
-# Carpeta base donde se crean las estructuras (Escritorio del usuario)
+# ---------------------------
+# Carpeta base: tu Escritorio
+# ---------------------------
 base_dir="$HOME/Escritorio"
 
-# Crear estructura
+# --------------------------------
+# Crear la estructura de carpetas
+# --------------------------------
+echo "Creando estructura de directorios en: $base_dir"
+
 for materia in "${asignaturas[@]}"; do
+  echo "→ Creando carpeta para: $materia"
   mkdir -p "$base_dir/$materia"
   for sub in "${subcarpetas[@]}"; do
     mkdir -p "$base_dir/$materia/$sub"
+    echo "   └── Subcarpeta: $sub"
   done
 done
 
-echo "Estructura creada correctamente en $base_dir"
+echo "✅ Estructura creada correctamente."
+
