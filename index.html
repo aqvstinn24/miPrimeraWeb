@@ -15,8 +15,7 @@
 
 # Trabajo Práctico N°2 - Script de creación de estructura de directorios
 # Autor: Agustin Ocampo
-# Fecha: (poné la fecha de hoy si querés)
-# Descripción: Este script crea una estructura de carpetas por asignatura con subcarpetas para enunciados, soluciones, bibliografía y videos.
+# Descripción: Crea carpetas por asignatura con subcarpetas para enunciados, soluciones, bibliografía y videos.
 
 # --------------------
 # Lista de asignaturas
@@ -36,10 +35,10 @@ asignaturas=(
 # --------------------------
 subcarpetas=("enunciados" "soluciones" "bibliografia" "videos")
 
-# ---------------------------
-# Carpeta base: tu Escritorio
-# ---------------------------
-base_dir="$HOME/Escritorio"
+# ------------------------------------------------------
+# Detectar ruta del escritorio según el idioma del sistema
+# ------------------------------------------------------
+base_dir="$(xdg-user-dir DESKTOP)"
 
 # --------------------------------
 # Crear la estructura de carpetas
@@ -55,5 +54,4 @@ for materia in "${asignaturas[@]}"; do
   done
 done
 
-echo "✅ Estructura creada correctamente."
-
+echo "✅ Estructura creada correctamente en $base_dir"
